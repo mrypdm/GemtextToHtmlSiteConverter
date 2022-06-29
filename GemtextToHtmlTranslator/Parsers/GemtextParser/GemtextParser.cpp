@@ -6,7 +6,7 @@
 #include <utils/string_utils.hpp>
 
 std::vector<std::pair<std::string, DocumentEntryType>>
-    GemtextParser::entityTypes{
+    GemtextParser::entryTypes{
         {"###", DocumentEntryType::SubSubHeader},
         {"##", DocumentEntryType::SubHeader},
         {"#", DocumentEntryType::Header},
@@ -18,7 +18,7 @@ std::vector<std::pair<std::string, DocumentEntryType>>
 
 DocumentEntryType GemtextParser::GetTypeForBlock(const std::string &blockText,
                                                  std::string &innerText) {
-  for (const auto &it : entityTypes) {
+  for (const auto &it : entryTypes) {
     // Если нашли в самом начале, а не где-то в центре
     if (blockText.find(it.first) == 0) {
       // Внутренний текст блока
@@ -42,7 +42,7 @@ DocumentEntry GemtextParser::ParseUnformattedTextBlock(
   return newEntry;
 }
 
-DocumentEntry GemtextParser::CreateLinkEntity(const std::string &innerText) {
+DocumentEntry GemtextParser::CreateLinkEntry(const std::string &innerText) {
   auto firstSpace = innerText.find_first_of(" \t");
 
   auto href = innerText.substr(0, firstSpace);
@@ -63,7 +63,7 @@ DocumentEntry GemtextParser::CreateLinkEntity(const std::string &innerText) {
 DocumentEntry GemtextParser::ParseFormattedBlock(DocumentEntryType newEntryType,
                                                  const std::string &innerText) {
   if (newEntryType == DocumentEntryType::Link) {
-    return CreateLinkEntity(innerText);
+    return CreateLinkEntry(innerText);
     // Общий случай неформатированного блока заменяем на частный
   } else if (newEntryType == DocumentEntryType::PreformattedText) {
     return DocumentEntry(DocumentEntryType::PreformattedTextOpen);

@@ -1,6 +1,4 @@
-//
-// Created by mrypdm on 07.06.22.
-//
+// Copyright 2022 mrypdm
 
 #ifndef INCLUDE_STRING_UTILS_HPP
 #define INCLUDE_STRING_UTILS_HPP
@@ -11,4 +9,4 @@
 bool IsEmptyOrWhitespaces(const std::string &str);
 std::string TrimString(const std::string &str);
 
-#endif // INCLUDE_STRING_UTILS_HPP
+#endif  // INCLUDE_STRING_UTILS_HPP

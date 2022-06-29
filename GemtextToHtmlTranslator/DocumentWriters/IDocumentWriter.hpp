@@ -1,17 +1,15 @@
-//
-// Created by mrypdm on 07.06.22.
-//
+// Copyright 2022 mrypdm
 
 #ifndef INCLUDE_IDOCUMENTWRITER_HPP
 #define INCLUDE_IDOCUMENTWRITER_HPP
 
+#include <Documents/DocumentEntry.hpp>
 #include <filesystem>
 #include <list>
-#include <Documents/DocumentEntry.hpp>
 
 struct IDocumentWriter {
-    virtual void Write(const std::list<DocumentEntry>& data) const = 0;
-    virtual ~IDocumentWriter() = default;
+  virtual void Write(const std::list<DocumentEntry>& data) const = 0;
+  virtual ~IDocumentWriter() = default;
 };
 
-#endif // INCLUDE_IDOCUMENTWRITER_HPP
+#endif  // INCLUDE_IDOCUMENTWRITER_HPP

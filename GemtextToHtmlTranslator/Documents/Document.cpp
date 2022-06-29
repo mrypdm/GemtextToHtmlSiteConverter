@@ -8,7 +8,7 @@ Document Document::CreateFrom(IDocumentReader &reader) {
     return doc;
 }
 
-void Document::SaveTo(const IDocumentWriter &writer) {
+void Document::SaveTo(IDocumentWriter &writer) {
     writer.Write(_data);
 }
 
